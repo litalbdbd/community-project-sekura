@@ -10,13 +10,6 @@ import React, { Component } from 'react';
 import Post from './components/Post';
 import {
   SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-  Button,
-  Image,
 } from 'react-native';
 
 import {

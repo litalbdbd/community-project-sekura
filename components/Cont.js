@@ -41,8 +41,7 @@ class ReadMore extends Component {
                 <Animated.View
                     style={{
                         opacity: this.state.animation,
-                    }}
-                >
+                    }}>
                     <Text numberOfLines={this.state.isExpended ? 0 : INITIAL_NUMBER_OF_LINES}>{text}</Text>
                 </Animated.View>
                 <Button onPress={() => { this.startAnimation(); this.handleReadMore(); }} title={this.state.isExpended ? "Read Less" : "Read More"}></Button>

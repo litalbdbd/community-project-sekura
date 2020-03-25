@@ -1,6 +1,7 @@
 
 import React, { Component } from 'react';
 import ReadMore from './Cont';
+import Like from './Like'
 
 import {
   StyleSheet,
@@ -39,6 +40,7 @@ class Post extends Component {
           style={{ height: 250, borderWidth: 1 }}
           source={{ uri: 'https://dianasuemi.com/wp-content/uploads/2017/08/QwupPdD.png' }}
         />
+        <Like/>
       </>
     );
   };
