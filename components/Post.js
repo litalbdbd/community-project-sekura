@@ -20,34 +20,37 @@ class Post extends Component {
 
   render() {
     let flag = 1;
-    let { text } = this.props;
+    let { title,
+      subTitle,
+      text,
+      likes,
+      liked } = this.props;
 
     return (
-      <>
+      <View style= {styles.post}>
         <Text style={styles.titleText} >
-          HERE IS THE TITLE
-            </Text>
-        <View>
-          <View style={styles.cardLabel}>
-          </View>
-          <View style={styles.card}>
+          {title}
+        </Text>
+        <Text style={styles.subText} >
+          {subTitle}
+        </Text>
             <View style={styles.cardBody}>
               <ReadMore text={text} style={styles.cardText} />
             </View>
-          </View>
-        </View>
         <Image
           style={{ height: 250, borderWidth: 1 }}
           source={{ uri: 'https://dianasuemi.com/wp-content/uploads/2017/08/QwupPdD.png' }}
         />
-        <Like/>
-      </>
+        <Like likes={likes} liked={liked} />
+      </View>
     );
   };
 }
 
 const styles = StyleSheet.create({
-
+  subText:{
+    fontSize: 23,
+  },
   titleText: {
     fontSize: 30,
     fontWeight: 'bold',
@@ -68,6 +71,12 @@ const styles = StyleSheet.create({
     margin: 10,
     fontWeight: "bold"
   },
+  post:{
+  marginBottom:15,
+  marginTop:15,
+    backgroundColor:"white",
+    padding:15
+  }
 });
 
 export default Post;
