@@ -9,7 +9,7 @@ import {
   Text,
   Image,
 } from 'react-native';
-import { types } from '@babel/core';
+
 
 class Post extends Component {
   render() {

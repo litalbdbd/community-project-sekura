@@ -11,15 +11,6 @@ import {
   SafeAreaView, FlatList, StyleSheet
 } from 'react-native';
 
-
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
 const DATA = [
   {
     key: '1',
