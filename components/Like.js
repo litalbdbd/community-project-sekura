@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+// import PropTypes from 'prop-types';
 import {
     View,
     Image,
@@ -8,37 +8,52 @@ import {
     StyleSheet
 } from 'react-native';
 
-class Like extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            liked: this.props.liked,
-            likes: this.props.likes
-        }
-    }
-
-    _ifLiked = () => {
-        this.setState(prevState => ({ liked: !prevState.liked, likes: this.state.liked ? this.state.likes - 1 : this.state.likes + 1 }));
-    }
-
-    render() {
-        const images = {
-            like: require('../images/like.png'),
-            likeFilled: require('../images/like-filled.png')
-        }
-        return (
-            <View style={styles.like}>
-                <Text>{this.state.likes}</Text>
-                <TouchableOpacity onPress={this._ifLiked}>
-                    <Image
-                        style={{ width: 30, height: 30 }}
-                        source={images[this.state.liked ? "likeFilled" : "like"]}
-                    />
-                </TouchableOpacity>
-            </View>
-        );
-    };
+const images = {
+    like: require('../images/like.png'),
+    likeFilled: require('../images/like-filled.png')
 }
+
+const Like = ({likes, liked, handleLikePress}) => {
+    return (
+        <View style={styles.like}>
+            <Text>{likes}</Text>
+            <TouchableOpacity onPress={handleLikePress}>
+                <Image
+                    style={{ width: 30, height: 30 }}
+                    source={images[liked ? "likeFilled" : "like"]}
+                />
+            </TouchableOpacity>
+        </View>
+    );
+}
+// Like.propTypes = {
+//     likes: PropTypes.number,
+//     liked: PropTypes.bool,
+//     handleLikePress: PropTypes.func
+// }
+
+// class Like extends Component {
+//     static propTypes = {
+//         likes: PropTypes.number,
+//         liked: PropTypes.bool,
+//         handleLikePress: PropTypes.func
+//     }
+
+//     render() {
+//         const {likes, liked, handleLikePress} = this.props;
+//         return (
+//             <View style={styles.like}>
+//                 <Text>{likes}</Text>
+//                 <TouchableOpacity onPress={handleLikePress}>
+//                     <Image
+//                         style={{ width: 30, height: 30 }}
+//                         source={images[liked ? "likeFilled" : "like"]}
+//                     />
+//                 </TouchableOpacity>
+//             </View>
+//         );
+//     };
+// }
 const styles = StyleSheet.create({
     like: {
         display: "flex",

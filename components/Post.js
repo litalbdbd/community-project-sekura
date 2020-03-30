@@ -1,7 +1,7 @@
-
 import React, { Component } from 'react';
+// import PropTypes from 'prop-types';
 import ReadMore from './Cont';
-import Like from './Like'
+import Like from './Like';
 
 import {
   StyleSheet,
@@ -9,22 +9,16 @@ import {
   Text,
   Image,
 } from 'react-native';
+import { types } from '@babel/core';
 
 class Post extends Component {
-  constructor() {
-    super();
-    this.state = {
-      content: true
-    }
-  }
-
   render() {
-    let flag = 1;
-    let { title,
+    const { title,
       subTitle,
       text,
       likes,
-      liked } = this.props;
+      liked,
+      imageUrl } = this.props.item;
 
     return (
       <View style= {styles.post}>
@@ -39,9 +33,9 @@ class Post extends Component {
             </View>
         <Image
           style={{ height: 250, borderWidth: 1 }}
-          source={{ uri: 'https://dianasuemi.com/wp-content/uploads/2017/08/QwupPdD.png' }}
+          source={{ uri: imageUrl }}
         />
-        <Like likes={likes} liked={liked} />
+        <Like likes={likes} liked={liked} handleLikePress={this.props.handleLikePress} />
       </View>
     );
   };

@@ -20,49 +20,48 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
+const DATA = [
+  {
+    key: '1',
+    title: 'First Item',
+    subTitle: 'blabla',
+    text: `There are enough articles on this site to fill two books, so it can sometimes be daunting to know where to start. Below are what many consider to be my “greatest hits,” the articles that have been the most popular, the most shared, or had the greatest effect on readers’ lives.
+    I’ve listed the best four articles in five different categories below: Understanding Yourself, Emotional Intelligence, Life Purpose, Relationships, and Self-Discipline.`,
+    likes: 23,
+    liked: false,
+    imageUrl: 'https://dianasuemi.com/wp-content/uploads/2017/08/QwupPdD.png'
+  },
+  {
+    key: '2',
+    title: 'second Item',
+    subTitle: 'blabla',
+    text: `There are enough articles on this site to fill two books, so it can sometimes be daunting to know where to start. Below are what many consider to be my “greatest hits,” the articles that have been the most popular, the most shared, or had the greatest effect on readers’ lives.
+    I’ve listed the best four articles in five different categories below: Understanding Yourself, Emotional Intelligence, Life Purpose, Relationships, and Self-Discipline.`,
+    likes: 23,
+    liked: true,
+    imageUrl: 'https://dianasuemi.com/wp-content/uploads/2017/08/QwupPdD.png'
+  },
+];
+
 class App extends Component {
-  render() {
-
-    const DATA = [
-      {
-        key: '1',
-        title: 'First Item',
-        subTitle: 'blabla',
-        text: `There are enough articles on this site to fill two books, so it can sometimes be daunting to know where to start. Below are what many consider to be my “greatest hits,” the articles that have been the most popular, the most shared, or had the greatest effect on readers’ lives.
-        I’ve listed the best four articles in five different categories below: Understanding Yourself, Emotional Intelligence, Life Purpose, Relationships, and Self-Discipline.`,
-        likes: 23,
-        liked: false
-      },
-      {
-        key: '2',
-        title: 'second Item',
-        subTitle: 'blabla',
-        text: `There are enough articles on this site to fill two books, so it can sometimes be daunting to know where to start. Below are what many consider to be my “greatest hits,” the articles that have been the most popular, the most shared, or had the greatest effect on readers’ lives.
-        I’ve listed the best four articles in five different categories below: Understanding Yourself, Emotional Intelligence, Life Purpose, Relationships, and Self-Discipline.`,
-        likes: 23,
-        liked: true
-      },
-    ];
-
-
+  handleLikePress = () => {
+    console.log('do some logic for handling like press')
+    // this.props.dispatch(actions.updateLike())
+  }
+  renderItem = ({item}) => {
     return (
-      <>
-        <SafeAreaView style={styles.body}>
-          <FlatList
-            data={DATA}
-            renderItem={({ item }) => (
-              <Post 
-              title = {item.title}
-              subTitle = {item.subTitle}
-              text = {item.text}
-              likes = {item.likes}
-              liked = {item.liked}
-              />
-            )}
-          />
-
-        </SafeAreaView>
-      </>
+      <Post item={item} handleLikePress={this.handleLikePress} />
+    )
+  }
+  render() {
+    console.log('App render')
+    return (
+      <SafeAreaView style={styles.body}>
+        <FlatList
+          data={DATA}
+          renderItem={this.renderItem}
+        />
+      </SafeAreaView>
     );
   };
 }
