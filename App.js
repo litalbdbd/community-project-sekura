@@ -14,15 +14,15 @@ import {
   SafeAreaView, FlatList, StyleSheet
 } from 'react-native';
 
-const ConnectedLoginGate = connect(state => ({
-  username: state.auth.username
-}))(LoginGate)
+// const ConnectedLoginGate = connect(state => ({
+//   username: state.auth.username
+// }))(App)
 
-const rootReducer = (state = {}, action) => {
-  return state
-}
+// const rootReducer = (state = {}, action) => {
+//   return state
+// }
 
-const store = createStore(rootReducer)
+// const store = createStore(rootReducer)
 
 
 const DATA = [
@@ -59,16 +59,13 @@ class App extends Component {
     )
   }
   render() {
-    console.log('App render')
     return (
-      <Provider store={store}>
-        <SafeAreaView style={styles.body}>
-          <FlatList
-            data={DATA}
-            renderItem={this.renderItem}
-          />
-        </SafeAreaView>
-      </Provider>
+      <SafeAreaView style={styles.body}>
+        <FlatList
+          data={DATA}
+          renderItem={this.renderItem}
+        />
+      </SafeAreaView>
     );
   };
 }
