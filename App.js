@@ -11,7 +11,7 @@ import { Provider } from 'react-redux';
 import React, { Component } from 'react';
 import Post from './components/Post';
 import {
-  SafeAreaView, FlatList, StyleSheet
+  SafeAreaView, FlatList, StyleSheet, View, Text
 } from 'react-native';
 
 // const ConnectedLoginGate = connect(state => ({
@@ -24,31 +24,21 @@ import {
 
 // const store = createStore(rootReducer)
 
-
-const DATA = [
-  {
-    key: '1',
-    title: 'First Item',
-    subTitle: 'blabla',
-    text: `There are enough articles on this site to fill two books, so it can sometimes be daunting to know where to start. Below are what many consider to be my “greatest hits,” the articles that have been the most popular, the most shared, or had the greatest effect on readers’ lives.
-    I’ve listed the best four articles in five different categories below: Understanding Yourself, Emotional Intelligence, Life Purpose, Relationships, and Self-Discipline.`,
-    likes: 23,
-    liked: false,
-    imageUrl: 'https://dianasuemi.com/wp-content/uploads/2017/08/QwupPdD.png'
-  },
-  {
-    key: '2',
-    title: 'second Item',
-    subTitle: 'blabla',
-    text: `There are enough articles on this site to fill two books, so it can sometimes be daunting to know where to start. Below are what many consider to be my “greatest hits,” the articles that have been the most popular, the most shared, or had the greatest effect on readers’ lives.
-    I’ve listed the best four articles in five different categories below: Understanding Yourself, Emotional Intelligence, Life Purpose, Relationships, and Self-Discipline.`,
-    likes: 23,
-    liked: true,
-    imageUrl: 'https://dianasuemi.com/wp-content/uploads/2017/08/QwupPdD.png'
-  },
-];
+import {API} from './mocks/server';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isLoading: true,
+      posts: []
+    }
+  }
+  async componentDidMount() {
+    API.resetData(); //reset data for hot-reloading 
+    const posts = await API.getPosts();
+    this.setState({posts, isLoading: false});
+  }
   handleLikePress = () => {
     console.log('do some logic for handling like press')
     // this.props.dispatch(actions.updateLike())
@@ -58,21 +48,37 @@ class App extends Component {
       <Post item={item} handleLikePress={this.handleLikePress} />
     )
   }
+
+  renderLoader = () => {
+    return (
+      <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+        <Text style={{fontSize: 25}}>Loading...</Text>
+      </View>
+    )
+  }
+
+  renderContent = () => {
+    return (
+      <FlatList
+        data={this.state.posts}
+        renderItem={this.renderItem}
+      />
+    );
+  }
+
   render() {
     return (
       <SafeAreaView style={styles.body}>
-        <FlatList
-          data={DATA}
-          renderItem={this.renderItem}
-        />
+        {this.state.isLoading ? this.renderLoader() : this.renderContent()}
       </SafeAreaView>
     );
   };
 }
 const styles = StyleSheet.create({
-  body: {
-    backgroundColor: "#FDF3FF"
-  }
+body:{
+  flex: 1,
+  backgroundColor:"#FDF3FF"
+}
 });
 
 export default App;
