@@ -5,11 +5,25 @@
  * @format
  * @flow
  */
+import { connect } from 'react-redux';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
 import React, { Component } from 'react';
 import Post from './components/Post';
 import {
   SafeAreaView, FlatList, StyleSheet
 } from 'react-native';
+
+const ConnectedLoginGate = connect(state => ({
+  username: state.auth.username
+}))(LoginGate)
+
+const rootReducer = (state = {}, action) => {
+  return state
+}
+
+const store = createStore(rootReducer)
+
 
 const DATA = [
   {
@@ -39,7 +53,7 @@ class App extends Component {
     console.log('do some logic for handling like press')
     // this.props.dispatch(actions.updateLike())
   }
-  renderItem = ({item}) => {
+  renderItem = ({ item }) => {
     return (
       <Post item={item} handleLikePress={this.handleLikePress} />
     )
@@ -47,19 +61,21 @@ class App extends Component {
   render() {
     console.log('App render')
     return (
-      <SafeAreaView style={styles.body}>
-        <FlatList
-          data={DATA}
-          renderItem={this.renderItem}
-        />
-      </SafeAreaView>
+      <Provider store={store}>
+        <SafeAreaView style={styles.body}>
+          <FlatList
+            data={DATA}
+            renderItem={this.renderItem}
+          />
+        </SafeAreaView>
+      </Provider>
     );
   };
 }
 const styles = StyleSheet.create({
-body:{
-  backgroundColor:"#FDF3FF"
-}
+  body: {
+    backgroundColor: "#FDF3FF"
+  }
 });
 
 export default App;
