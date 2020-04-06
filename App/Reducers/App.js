@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import React, { Component } from 'react';
-import Post from './components/Post';
+import Post from '../Components/Post';
 import {
   SafeAreaView, FlatList, StyleSheet, View, Text
 } from 'react-native';
@@ -52,7 +52,7 @@ reducer2 = posts
   }
 */
 
-import {API} from './mocks/server';
+import {API} from '../../mocks/server';
 
 class App extends Component {
   constructor(props) {
