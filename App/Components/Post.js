@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import ReadMore from './Cont';
 import Like from './Like';
 
@@ -21,16 +22,16 @@ class Post extends Component {
       imageUrl } = this.props.item;
 
     return (
-      <View style= {styles.post}>
+      <View style={styles.post}>
         <Text style={styles.titleText} >
           {title}
         </Text>
         <Text style={styles.subText} >
           {subTitle}
         </Text>
-            <View style={styles.cardBody}>
-              <ReadMore text={text} style={styles.cardText} />
-            </View>
+        <View style={styles.cardBody}>
+          <ReadMore text={text} style={styles.cardText} />
+        </View>
         <Image
           style={{ height: 250, borderWidth: 1 }}
           source={{ uri: imageUrl }}
@@ -41,8 +42,12 @@ class Post extends Component {
   };
 }
 
+const mapStateToProps = state => {
+  return { posts: state.posts }
+}
+
 const styles = StyleSheet.create({
-  subText:{
+  subText: {
     fontSize: 23,
   },
   titleText: {
@@ -65,12 +70,12 @@ const styles = StyleSheet.create({
     margin: 10,
     fontWeight: "bold"
   },
-  post:{
-  marginBottom:15,
-  marginTop:15,
-    backgroundColor:"white",
-    padding:15
+  post: {
+    marginBottom: 15,
+    marginTop: 15,
+    backgroundColor: "white",
+    padding: 15
   }
 });
 
-export default Post;
+export default connect(mapStateToProps)(Post);

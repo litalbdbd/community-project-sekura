@@ -1,7 +1,6 @@
 
 
 
-
 const LikeAction = (userID, postID) => {
     return {
         type: 'LIKE',
@@ -9,6 +8,15 @@ const LikeAction = (userID, postID) => {
             userID: userID,
             postID: postID
         }
-    }
+    };
+};
 
-}
+const UnlikeAction = (userID, postID) => {
+    return {
+        type: 'UNLIKE',
+        payload: {
+            userID: userID,
+            postID: postID
+        }
+    };
+};

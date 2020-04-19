@@ -52,7 +52,7 @@ reducer2 = posts
   }
 */
 
-import {API} from '../../mocks/server';
+import { API } from '../../mocks/server';
 
 class App extends Component {
   constructor(props) {
@@ -66,7 +66,7 @@ class App extends Component {
     API.resetData(); //reset data for hot-reloading 
     await API.updatePostLikes('1', '1', 'like')
     const posts = await API.getPosts();
-    this.setState({posts, isLoading: false});
+    this.setState({ posts, isLoading: false });
   }
   handleLikePress = async () => {
     // console.log('do some logic for handling like press')
@@ -84,8 +84,8 @@ class App extends Component {
 
   renderLoader = () => {
     return (
-      <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-        <Text style={{fontSize: 25}}>Loading...</Text>
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <Text style={{ fontSize: 25 }}>Loading...</Text>
       </View>
     )
   }
@@ -108,10 +108,10 @@ class App extends Component {
   };
 }
 const styles = StyleSheet.create({
-body:{
-  flex: 1,
-  backgroundColor:"#FDF3FF"
-}
+  body: {
+    flex: 1,
+    backgroundColor: "#FDF3FF"
+  }
 });
 
 export default App;
