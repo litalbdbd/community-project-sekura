@@ -2,7 +2,7 @@ const posts = {
 	1: {
 		id: '1',
 		title: 'First Item',
-		subTitle: 'blabla',
+		subTitle: 'bla1',
 		text: `There are enough articles on this site to fill two books, so it can sometimes be daunting to know where to start. Below are what many consider to be my “greatest hits,” the articles that have been the most popular, the most shared, or had the greatest effect on readers’ lives.
 		I’ve listed the best four articles in five different categories below: Understanding Yourself, Emotional Intelligence, Life Purpose, Relationships, and Self-Discipline.`,
 		likes: 0,

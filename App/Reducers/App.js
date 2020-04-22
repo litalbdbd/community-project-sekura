@@ -5,9 +5,7 @@
  * @format
  * @flow
  */
-import { connect } from 'react-redux';
-import { createStore } from 'redux';
-import { Provider } from 'react-redux';
+
 import React, { Component } from 'react';
 import Post from '../Components/Post';
 import {
@@ -32,23 +30,23 @@ reducer2 = posts
   ids: ['1', '2'],
   map: {
     1: {
-		id: '1',
-		title: 'First Item',
-		subTitle: 'blabla',
-		text: `There are enough articles on this site to fill two books, so it can sometimes be daunting to know where to start. Below are what many consider to be my “greatest hits,” the articles that have been the most popular, the most shared, or had the greatest effect on readers’ lives.
-		I’ve listed the best four articles in five different categories below: Understanding Yourself, Emotional Intelligence, Life Purpose, Relationships, and Self-Discipline.`,
-		likes: 0,
-		imageUrl: 'https://dianasuemi.com/wp-content/uploads/2017/08/QwupPdD.png'
-	},
-	2: {
-		id: '2',
-		title: 'Second Item',
-		subTitle: 'blabla',
-		text: `There are enough articles on this site to fill two books, so it can sometimes be daunting to know where to start. Below are what many consider to be my “greatest hits,” the articles that have been the most popular, the most shared, or had the greatest effect on readers’ lives.
-		I’ve listed the best four articles in five different categories below: Understanding Yourself, Emotional Intelligence, Life Purpose, Relationships, and Self-Discipline.`,
-		likes: 0,
-		imageUrl: 'https://dianasuemi.com/wp-content/uploads/2017/08/QwupPdD.png'
-	}
+    id: '1',
+    title: 'First Item',
+    subTitle: 'blabla',
+    text: `There are enough articles on this site to fill two books, so it can sometimes be daunting to know where to start. Below are what many consider to be my “greatest hits,” the articles that have been the most popular, the most shared, or had the greatest effect on readers’ lives.
+    I’ve listed the best four articles in five different categories below: Understanding Yourself, Emotional Intelligence, Life Purpose, Relationships, and Self-Discipline.`,
+    likes: 0,
+    imageUrl: 'https://dianasuemi.com/wp-content/uploads/2017/08/QwupPdD.png'
+  },
+  2: {
+    id: '2',
+    title: 'Second Item',
+    subTitle: 'blabla',
+    text: `There are enough articles on this site to fill two books, so it can sometimes be daunting to know where to start. Below are what many consider to be my “greatest hits,” the articles that have been the most popular, the most shared, or had the greatest effect on readers’ lives.
+    I’ve listed the best four articles in five different categories below: Understanding Yourself, Emotional Intelligence, Life Purpose, Relationships, and Self-Discipline.`,
+    likes: 0,
+    imageUrl: 'https://dianasuemi.com/wp-content/uploads/2017/08/QwupPdD.png'
+  }
   }
 */
 
@@ -67,6 +65,7 @@ class App extends Component {
     await API.updatePostLikes('1', '1', 'like')
     const posts = await API.getPosts();
     this.setState({ posts, isLoading: false });
+    // this.props.dispatch(actions.getPosts());
   }
   handleLikePress = async () => {
     // console.log('do some logic for handling like press')
@@ -76,6 +75,7 @@ class App extends Component {
     // const posts = await API.getPosts();
     // this.setState({posts, isLoading: false});
   }
+
   renderItem = ({ item }) => {
     return (
       <Post item={item} handleLikePress={this.handleLikePress} />
@@ -91,6 +91,7 @@ class App extends Component {
   }
 
   renderContent = () => {
+   // const posts = await API.getPosts();
     return (
       <FlatList
         data={this.state.posts}
@@ -110,8 +111,9 @@ class App extends Component {
 const styles = StyleSheet.create({
   body: {
     flex: 1,
-    backgroundColor: "#FDF3FF"
+    backgroundColor: "#f2f2f2"
   }
 });
+
 
 export default App;

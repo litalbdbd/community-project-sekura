@@ -18,8 +18,8 @@ const Like = ({likes, liked, handleLikePress}) => {
         <View style={styles.like}>
             <Text>{likes}</Text>
             <TouchableOpacity onPress={handleLikePress}>
-                <Image
-                    style={{ width: 30, height: 30 }}
+                <Image 
+                    style={{ width: 20, height: 20, marginLeft:10 }}
                     source={images[liked ? "likeFilled" : "like"]}
                 />
             </TouchableOpacity>
@@ -59,7 +59,8 @@ const styles = StyleSheet.create({
         display: "flex",
         flexDirection: "row",
         justifyContent: "center",
-        alignItems: "center"
+        alignItems: "center",
+        margin:20
     }
 });
 export default Like;

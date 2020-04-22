@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import ReadMore from './Cont';
 import Like from './Like';
 
@@ -23,17 +21,23 @@ class Post extends Component {
 
     return (
       <View style={styles.post}>
-        <Text style={styles.titleText} >
-          {title}
-        </Text>
+        <View style={{flexDirection:'row'}}>
+          <Text style={styles.titleText} >
+            {title}
+          </Text>
+          <Image
+            style={{ width: 20, height: 20, marginLeft:'auto' }}
+            source={require('../images/menu.png')}
+          />
+          <Image />
+        </View>
         <Text style={styles.subText} >
           {subTitle}
         </Text>
         <View style={styles.cardBody}>
           <ReadMore text={text} style={styles.cardText} />
         </View>
-        <Image
-          style={{ height: 250, borderWidth: 1 }}
+        <Image style={styles.postImage}
           source={{ uri: imageUrl }}
         />
         <Like likes={likes} liked={liked} handleLikePress={this.props.handleLikePress} />
@@ -68,14 +72,22 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: "center",
     margin: 10,
-    fontWeight: "bold"
+    fontWeight: "bold",
+    alignSelf:'flex-start'
   },
   post: {
-    marginBottom: 15,
-    marginTop: 15,
+    marginBottom: 5,
+    marginTop: 5,
     backgroundColor: "white",
-    padding: 15
+    padding: 10,
+
+  },
+  postImage: {
+    height: 250,
+    borderWidth: 0,
+    borderRadius: 12,
+
   }
 });
 
-export default connect(mapStateToProps)(Post);
+export default Post;
