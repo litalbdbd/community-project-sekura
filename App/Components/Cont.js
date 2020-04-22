@@ -18,17 +18,17 @@ class ReadMore extends Component {
             animation: new Animated.Value(1)
         }
     }
-    startAnimation = () => {
-        Animated.timing(this.state.animation, {
-            toValue: 0,
-            timing: 1
-        }).start(() => {
-            Animated.timing(this.state.animation, {
-                toValue: 1,
-                duration: 1
-            }).start();
-        })
-    }
+    // startAnimation = () => {
+    //     Animated.timing(this.state.animation, {
+    //         toValue: 0,
+    //         timing: 1
+    //     }).start(() => {
+    //         Animated.timing(this.state.animation, {
+    //             toValue: 1,
+    //             duration: 1
+    //         }).start();
+    //     })
+    // }
 
     handleReadMore = () => {
         this.setState(prevState => ({ isExpended: !prevState.isExpended }));
@@ -37,14 +37,15 @@ class ReadMore extends Component {
     render() {
         const { text } = this.props;
         return (
-            <View >
-                <Animated.View
-                    style={{
+            <View>
+                {/* <Animated.View  */}
+                    {/* style={{
                         opacity: this.state.animation,
-                    }}>
-                    <Text numberOfLines={this.state.isExpended ? 0 : INITIAL_NUMBER_OF_LINES}>{text}</Text>
-                </Animated.View>
-                <Button onPress={() => { this.startAnimation(); this.handleReadMore(); }} title={this.state.isExpended ? "Read Less" : "Read More"}></Button>
+                    }}> */}
+                {/* </Animated.View> */}
+                <Text onPress={() => { this.handleReadMore(); }} numberOfLines={this.state.isExpended ? 0 : INITIAL_NUMBER_OF_LINES} >{text}</Text>
+                <Text style= {{color:'blue'}} onPress={() => { this.handleReadMore(); }} >{this.state.isExpended ? "Read Less" : "Read More"}</Text>
+                {/* <Button onPress={() => { this.handleReadMore(); }} title={this.state.isExpended ? "Read Less" : "Read More"}></Button> */}
             </View>
         );
     };
