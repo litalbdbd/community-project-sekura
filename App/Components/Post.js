@@ -11,12 +11,12 @@ import {
 
 
 class Post extends Component {
+
   render() {
     const { title,
       subTitle,
       text,
       likes,
-      liked,
       imageUrl } = this.props.item;
 
     return (
@@ -40,7 +40,7 @@ class Post extends Component {
         <Image style={styles.postImage}
           source={{ uri: imageUrl }}
         />
-        <Like likes={likes} liked={liked} handleLikePress={this.props.handleLikePress} />
+        <Like likes={likes}  />
       </View>
     );
   };

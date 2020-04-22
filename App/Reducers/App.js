@@ -57,7 +57,6 @@ class App extends Component {
     super(props);
     this.state = {
       isLoading: true,
-      // posts: []
     }
   }
   async componentDidMount() {
@@ -67,18 +66,12 @@ class App extends Component {
     this.setState({ posts, isLoading: false });
     // this.props.dispatch(actions.getPosts());
   }
-  handleLikePress = async () => {
-    // console.log('do some logic for handling like press')
-    // this.props.dispatch(actions.updateLike(postId))
 
-    // await API.updatePostLikes('1', '1', 'unlike')
-    // const posts = await API.getPosts();
-    // this.setState({posts, isLoading: false});
-  }
+
 
   renderItem = ({ item }) => {
     return (
-      <Post item={item} handleLikePress={this.handleLikePress} />
+      <Post item={item}  />
     )
   }
 
