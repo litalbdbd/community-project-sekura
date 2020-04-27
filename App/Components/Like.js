@@ -5,7 +5,8 @@ import {
     Image,
     TouchableOpacity,
     Text,
-    StyleSheet
+    StyleSheet,
+    TouchableHighlight
 } from 'react-native';
 
 const images = {
@@ -55,10 +56,12 @@ class Like extends Component {
 
 
     render() {
-        const { likes, liked } = this.props;
+        const { likes} = this.props;
         return (
+            // <TouchableHighlight onPress={ this.onClick } style={ {backgroundColor: "grey"}}>
+
             <View style={styles.like}>
-                <Text>{likes}</Text>
+                <Text style={{color:this.state.liked ? 'aqua' : "black"}}>{likes}</Text>
                 <TouchableOpacity onPress={this.handleLikePress}>
                     <Image
                         style={{ width: 20, height: 20 , marginLeft:10}}
@@ -66,6 +69,7 @@ class Like extends Component {
                     />
                 </TouchableOpacity>
             </View>
+            // </TouchableHighlight>
         );
     };
 }
