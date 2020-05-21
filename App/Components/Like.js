@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
 import {
     View,
     Image,
@@ -14,43 +13,18 @@ const images = {
     likeFilled: require('../images/like-filled.png')
 }
 
-// const Like = ({likes, liked, handleLikePress}) => {
-//     return (
-//         <View style={styles.like}>
-//             <Text>{likes}</Text>
-//             <TouchableOpacity onPress={handleLikePress}>
-//                 <Image 
-//                     style={{ width: 20, height: 20, marginLeft:10 }}
-//                     source={images[liked ? "likeFilled" : "like"]}
-//                 />
-//             </TouchableOpacity>
-//         </View>
-//     );
-// }
-// Like.propTypes = {
-//     likes: PropTypes.number,
-//     liked: PropTypes.bool,
-//     handleLikePress: PropTypes.func
-// }
-
 class Like extends Component {
-    // static propTypes = {
-    //     likes: PropTypes.number,
-    //     liked: PropTypes.bool,
-    //     handleLikePress: PropTypes.func
-    // }
+
 
     constructor() {
         super();
         this.state = {
             liked: false,
-            // count: 0
         }
     }
 
     handleLikePress = () => {
         this.setState(prevState => ({ liked: !prevState.liked }));
-        // this.state.liked=!this.state.liked;
     }
 
 
@@ -58,10 +32,9 @@ class Like extends Component {
     render() {
         const { likes} = this.props;
         return (
-            // <TouchableHighlight onPress={ this.onClick } style={ {backgroundColor: "grey"}}>
 
             <View style={styles.like}>
-                <Text style={{color:this.state.liked ? 'aqua' : "black"}}>{likes}</Text>
+                <Text style={{color:this.state.liked ? 'aqua' : "black"}}>{this.state.liked ? likes+1 : likes}</Text>
                 <TouchableOpacity onPress={this.handleLikePress}>
                     <Image
                         style={{ width: 20, height: 20 , marginLeft:10}}
@@ -69,7 +42,6 @@ class Like extends Component {
                     />
                 </TouchableOpacity>
             </View>
-            // </TouchableHighlight>
         );
     };
 }
